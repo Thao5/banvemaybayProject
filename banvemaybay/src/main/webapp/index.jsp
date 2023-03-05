@@ -5,16 +5,23 @@
 <html>
 
 <head>
+<script src="static/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-<script src="javascript.js"></script>
+	<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="static/js/javascript.js"></script>
+<script src="static/js/index.js"></script>
 
 <meta charset="UTF-8">
 <title>Home</title>
 <link rel='shortcut icon' href='' />
 <link rel="stylesheet" href="static/css/style.css" />
+<link rel="stylesheet" href="static/css/styles.css" />
 
 <link rel='shortcut icon'
 	href='https://findicons.com/files/icons/2792/hex_icons/128/anomaly_korea.png' />
@@ -23,9 +30,6 @@
 	rel="stylesheet"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	crossorigin="anonymous"></script>
 
 
 <script
@@ -37,7 +41,6 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="jquery-3.6.0.min.js"></script>
 </head>
 <body onload="startTime()">
 
@@ -75,6 +78,16 @@
 					</div>
 				</form>
 			</div>
+		</div>
+	</div>
+	<div class="wrapper fadeInDown">
+		<div id="formContent">
+			<form id="login-form" method="post">
+				<input type="text" id="login" class="fadeIn second" name="login"
+					placeholder="name"> <input type="text" id="password"
+					class="fadeIn third" name="login" placeholder="password"> <input
+					type="submit" class="fadeIn fourth" value="Log In">
+			</form>
 		</div>
 	</div>
 	<p class="line">
