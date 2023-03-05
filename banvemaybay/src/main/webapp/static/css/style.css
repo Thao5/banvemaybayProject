@@ -1,4 +1,6 @@
-
+body{
+  font-family: 'Nunito Sans';
+}
 .line{
     margin: 20px;
     margin-top: 80px;
@@ -68,6 +70,16 @@ div.Holders {
 
   div.Ins > button {
     padding: 8px 12px;
+    gap: 8px;
+    width: 100px;
+    height: 55px;
+    color: #FAFAFA;
+    background: #605DEC;
+    border-radius: 4px;
+    margin:0;
+  }
+  div.Ins input[type=submit]{
+  	padding: 8px 12px;
     gap: 8px;
     width: 100px;
     height: 55px;

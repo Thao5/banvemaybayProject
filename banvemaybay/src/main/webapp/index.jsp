@@ -1,227 +1,195 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <html>
-  
-    <head>
-        <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-      />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-      <script src="javascript.js"></script>
 
-        <meta charset="UTF-8">
-        <title>Home</title>
-        <link rel='shortcut icon' href='' />
-        <link rel="stylesheet" href="static/css/style.css"/>
+<head>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+<script src="javascript.js"></script>
 
-      <link rel='shortcut icon' href='https://findicons.com/files/icons/2792/hex_icons/128/anomaly_korea.png' />
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<title>Home</title>
+<link rel='shortcut icon' href='' />
+<link rel="stylesheet" href="static/css/style.css" />
 
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="jquery-3.6.0.min.js"></script>
-    </head>
-    <body  onload="startTime()">
-      
-      <div class="header">
-        <div class="title">
-          <h1 > Airline</h1>
-        </div>
-        <nav>
-          <a href="index.jsp">Flights</a>
-          <a href="#" id ="signin" >Sign in</a>
-          <a href="signup.jsp" id="signup">Sign up</a>
-        </nav>
-      </div>
-       <!-- end of navbar -->
-<div class="search">
-  <div class="Main" id ="main">
-    <div class="Holders">
-      <div class="Ins">
-        <select id="tp">
-          <option value="" disabled selected>Chọn điểm đi</option>
-          <option value="1">TP.HCM</option>
-          <option value="2">Hanoi</option>
-          <option value="3">Vinh</option>
-          <option value="4">Da Nang</option>
-        </select> 
-
-        <select id="tp">
-          <option value="" disabled selected>Chọn điểm đến</option>
-          <option value="1">TP.HCM</option>
-          <option value="2">Hanoi</option>
-          <option value="3">Vinh</option>
-          <option value="4">Da Nang</option>
-        </select> 
-
-        <input type="text" aria-label="Last name" class="form-control txt-NgayDi" id="datepicker" placeholder="Chọn ngày khởi điểm" font-weight:bold> 
-        <input type="text" aria-label="Last name" class="form-control txt-NgayVe" id="datepicker" placeholder="Chọn ngày về" font-weight:bold> 
-        <button type="button">Search</button>
-      </div>
-    </div>
-  </div>
-</div>
- <p class="line">Choose a <a href="">deprating</a> fly</p>
+<link rel='shortcut icon'
+	href='https://findicons.com/files/icons/2792/hex_icons/128/anomaly_korea.png' />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
 
 
- <div class="container-fluid">
-    <div class="row">
-      <div class="col-8">
-        <div class="table-choose">
-            <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>Giờ khởi hành</th>
-                    <th>Ngày khởi điểm</th>
-                    <th>Ngày quay về</th>
-                    <th>Tổng tiền</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <img class="airport-logo" src="https://thuthuatnhanh.com/wp-content/uploads/2020/09/hinh-anh-tia-chop-mau-vang-ve.jpg" alt="">
-                      <p class="time">16h45</p>
-                     <p><small>AirLine</small></p>
-                    </td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
-                    <td>500$</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img class="airport-logo" src="https://wall.vn/wp-content/uploads/2019/11/hinh-nen-hoa-hong-dep-24.jpg" alt="">
-                      <p class="time">16h45</p>
-                      <p><small>VietJet</small></p>
-                    <td>Moe</td>
-                    <td>mary@example.com</td>
-                    <td>500$</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img class="airport-logo" src="https://wall.vn/wp-content/uploads/2019/11/hinh-nen-hoa-hong-dep-24.jpg" alt="">
-                      <p class="time">16h45</p>
-                      <p><small>AirLine</small></p>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                    <td>500$</td> 
-                  </tr>
-                  
-                </tbody>
-               
-              </table>
-        
-        </div>
-      
-      </div>  
-      
-      <div class="col-4">
-        <div class="table-price">
-            <table class="table table-hover">
-             <span class="price-grid"> Price Grid</span>
-                  <tr>
-                    <th></th>
-                    <th>2/12</th>
-                    <th>2/13</th>
-                    <th>2/14</th>
-                    <th>2/15</th>
-                    <th>2/16</th>
-                   
-                  </tr>
-               
-              
-                  <tr>
-                    <td>3/7</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                  </tr>
-                  <tr>
-                    <td>3/8</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                  </tr>
-                  <tr>
-                    <td>3/9</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                  </tr>
-                  <tr>
-                    <td>3/10</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                  </tr>
-                  <tr>
-                    <td>3/11</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                  </tr>
-                
-              </table>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-  
-  <form class="d-flex">
-    
-    <button class="btn btn-primary show-fly" type="button">Show All Flights</button>
-  </form>
-  <div class="content">
-  <div class="check-photo">
-     <img  class="img" src="https://1.bp.blogspot.com/-cnqvDDnG_-c/W5HVURkNRYI/AAAAAAAAIXU/l42nCk73EowoOwqB-sIAsKn4ZS88tZnCwCLcBGAs/w1200-h630-p-k-no-nu/hinh%2Banh%2Bmay%2Bbay%2B%25281%2529.jpg" alt="">
-  </div>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="jquery-3.6.0.min.js"></script>
+</head>
+<body onload="startTime()">
+
+	<div class="header">
+		<div class="title">
+			<h1>Airline</h1>
+		</div>
+		<nav>
+			<a href="index.jsp">Flights</a> <a href="#" id="signin">Sign in</a> <a
+				href="signup.jsp" id="signup">Sign up</a>
+		</nav>
+	</div>
+	<!-- end of navbar -->
+	<div class="search">
+		<div class="Main" id="main">
+			<div class="Holders">
+				<form method="post">
+					<div class="Ins">
+						<select id="tp" name="slb_diemDi">
+							<option value="" disabled selected>Chọn điểm đi</option>
+							<option value="1">TP.HCM</option>
+							<option value="2">Hanoi</option>
+							<option value="3">Vinh</option>
+							<option value="4">Da Nang</option>
+						</select> <select id="tp" name="slb_diemDen">
+							<option value="" disabled selected>Chọn điểm đến</option>
+							<option value="1">TP.HCM</option>
+							<option value="2">Hanoi</option>
+							<option value="3">Vinh</option>
+							<option value="4">Da Nang</option>
+						</select> 
+						<input type="text" aria-label="Last name" class="form-control txt-NgayDi" id="datepicker" name="txt_ngayDi" placeholder="Chọn ngày khởi điểm" font-weight:bold> 
+						<input type="text" aria-label="Last name" class="form-control txt-NgayVe" id="datepicker" name="txt_ngayVe" placeholder="Chọn ngày về" font-weight:bold> 
+						<input type="submit" value="Search">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<p class="line">
+		Choose a <a href="">deprating</a> fly
+	</p>
+
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12">
+				<div class="table-choose">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Giờ khởi hành</th>
+								<th>Ngày khởi điểm</th>
+								<th>Ngày quay về</th>
+								<th>điểm đi</th>
+								<th>điểm đến</th>
+								<th>Giá vé</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><img class="airport-logo"
+									src="https://thuthuatnhanh.com/wp-content/uploads/2020/09/hinh-anh-tia-chop-mau-vang-ve.jpg"
+									alt="">
+									<p class="time">16h45</p>
+									<p>
+										<small>AirLine</small>
+									</p></td>
+								<td>Doe</td>
+								<td>john@example.com</td>
+								<td>500$</td>
+							</tr>
+							<tr>
+								<td><img class="airport-logo"
+									src="https://wall.vn/wp-content/uploads/2019/11/hinh-nen-hoa-hong-dep-24.jpg"
+									alt="">
+									<p class="time">16h45</p>
+									<p>
+										<small>VietJet</small>
+									</p>
+								<td>Moe</td>
+								<td>mary@example.com</td>
+								<td>500$</td>
+							</tr>
+							<tr>
+								<td><img class="airport-logo"
+									src="https://wall.vn/wp-content/uploads/2019/11/hinh-nen-hoa-hong-dep-24.jpg"
+									alt="">
+									<p class="time">16h45</p>
+									<p>
+										<small>AirLine</small>
+									</p>
+								<td>Dooley</td>
+								<td>july@example.com</td>
+								<td>500$</td>
+							</tr>
+
+						</tbody>
+
+					</table>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<form class="d-flex">
+
+		<button class="btn btn-primary show-fly" type="button">Show
+			All Flights</button>
+	</form>
+	<div class="content">
+		<div class="check-photo">
+			<img class="img"
+				src="https://1.bp.blogspot.com/-cnqvDDnG_-c/W5HVURkNRYI/AAAAAAAAIXU/l42nCk73EowoOwqB-sIAsKn4ZS88tZnCwCLcBGAs/w1200-h630-p-k-no-nu/hinh%2Banh%2Bmay%2Bbay%2B%25281%2529.jpg"
+				alt="">
+		</div>
 
 
 
 
 
-  <div class="price-rating">
-    <p class="open">Price rating  <small class="buy-soon">Buy soon</small> </p> 
-     <div >We recommend booking soon. The average cost of this Flightsis $750, but could rise 19% to $885 in two weeks </div>
-     <div>
-     <p class="time-content " >Thời gian hiện tại</p>
-     <p id="cooldown"></p>
-    </div>
-     
-
-     <script>
-     function startTime() {
-       const date = new Date();
-       document.getElementById("cooldown").innerHTML = date.toLocaleTimeString();
-       setTimeout(function() {startTime()}, 1000);
-     }
-     </script>
-  </div>
+		<div class="price-rating">
+			<p class="open">
+				Price rating <small class="buy-soon">Buy soon</small>
+			</p>
+			<div>We recommend booking soon. The average cost of this
+				Flightsis $750, but could rise 19% to $885 in two weeks</div>
+			<div>
+				<p class="time-content ">Thời gian hiện tại</p>
+				<p id="cooldown"></p>
+			</div>
 
 
+			<script>
+				function startTime() {
+					const date = new Date();
+					document.getElementById("cooldown").innerHTML = date
+							.toLocaleTimeString();
+					setTimeout(function() {
+						startTime()
+					}, 1000);
+				}
+			</script>
+		</div>
 
 
 
-  <!-- <div onload="hienthithoigian">
+
+
+		<!-- <div onload="hienthithoigian">
     <h2>Thời gian hiện tại là:<span id="thoigian">
   
     </span></h2>
@@ -236,14 +204,10 @@
     let giay = today.setSeconds()
     document.getElementById("thoigian").innerHTML= gio +":"+phut+":"+giay
     setTimeout("hienthithoigian",1000) -->
-   
+</body>
 
 
 
-    </body>
 
-   
-
-   
 </html>
 

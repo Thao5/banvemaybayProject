@@ -51,52 +51,56 @@
 		<div class="col-sm-7">
 			<h3>Sign Up</h3>
 			<div>
-				<div class="row">
-					<div class="form-floating mb-3 mt-3 col-sm-3">
-						<input type="text" class="form-control" id="txt-firstName"
-							required placeholder="First name*" name="txt-firstName">
-						<label for="txt-firstName">First name*</label>
+				<form action="/banvemaybay/signup" method="post">
+					<div class="row">
+						<div class="form-floating mb-3 mt-3 col-sm-3">
+							<input type="text" class="form-control" id="txt-firstName"
+								required placeholder="First name*" name="txt-firstName">
+							<label for="txt-firstName">First name*</label>
+						</div>
+						<div class="form-floating mb-3 mt-3 col-sm-3">
+							<input type="text" class="form-control" id="txt-lastName"
+								required placeholder="Last name*" name="txt-lastName"> <label
+								for="txt-lastName">Last name*</label>
+						</div>
 					</div>
-					<div class="form-floating mb-3 mt-3 col-sm-3">
-						<input type="text" class="form-control" id="txt-lastName" required
-							placeholder="Last name*" name="txt-lastName"> <label
-							for="txt-lastName">Last name*</label>
+					<div class="row">
+						<div class="form-floating mt-3 mb-3 col-sm-4">
+							<input type="email" class="form-control" id="txt-email" required
+								placeholder="Email Address*" name="txt-email"> <label
+								for="txt-email">Email Address*</label>
+						</div>
+						<div class="form-floating mb-3 mt-3 col-sm-4">
+							<input type="number" class="form-control" id="number-phone"
+								required placeholder="Phone number*" name="number-phone">
+							<label for="number-phone">Phone number*</label>
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="form-floating mt-3 mb-3 col-sm-4">
-						<input type="email" class="form-control" id="txt-email" required
-							placeholder="Email Address*" name="txt-email"> <label
-							for="txt-email">Email Address*</label>
+					<div class="row">
+						<div class="form-floating mb-3 mt-3 col-sm-4">
+							<input type="text" class="form-control" id="username" required
+								placeholder="Username*" name="username"> <label
+								for="username">Username</label>
+						</div>
+						<div class="form-floating mt-3 mb-3 col-sm-4">
+							<input type="password" class="form-control" id="pw" required
+								placeholder="Password*" name="pw"> <label for="pw">Password</label>
+						</div>
 					</div>
-					<div class="form-floating mb-3 mt-3 col-sm-4">
-						<input type="number" class="form-control" id="number-phone"
-							required placeholder="Phone number*" name="number-phone">
-						<label for="number-phone">Phone number*</label>
+					<div class="row">
+						<div class="form-floating mt-3 mb-3 col-sm-4">
+							<input type="password" class="form-control" id="pw_confirm"
+								required placeholder="Password confirm*" name="pw_confirm">
+							<label for="pw_confrim">Password confirm</label>
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="form-floating mb-3 mt-3 col-sm-4">
-						<input type="text" class="form-control" id="username" required
-							placeholder="Username" name="username"> <label
-							for="username">Username</label>
+					<div class="row">
+						<div class="form-floating mb-3 mt-3 col-sm-4">
+							<input type="submit" class="btn btn-info" value="Sign up" onclick = "lengthOfPassword();validate()">
+							</button>
+						</div>
 					</div>
-					<div class="form-floating mt-3 mb-3 col-sm-4">
-						<input type="password" class="form-control" id="pw" required
-							placeholder="Password" name="pw"> <label for="pw">Password</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="form-floating mt-3 mb-3 col-sm-4">
-						<input type="password" class="form-control" id="pw_confirm" required
-							placeholder="Password confirm" name="pw_confirm"> <label for="pw_confrim">Password confirm</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="form-floating mb-3 mt-3 col-sm-4">
-						<input type="submit" class="btn btn-info" value="Sign up"></button>
-					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -130,5 +134,25 @@
   render(amount);
 });
           </script>
+	<script>
+    function validate() {
+    var x= document.getElementById("pw");
+    var y= document.getElementById("pw_confirm");
+    if(x.value==y.value) return;
+    else alert("password not same");
+    
+    }
+    
+    </script>
+	<script>
+      function lengthOfPassword(){
+        var password = document.getElementById("pw");
+        var length = password.value.length;
+        if (length <6 || length >20){
+          alert('Please enter password from 6 to 20 letters');
+
+        }
+      }
+    </script>
 </body>
 </html>
