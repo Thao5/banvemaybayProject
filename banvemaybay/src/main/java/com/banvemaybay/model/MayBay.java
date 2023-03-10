@@ -5,16 +5,26 @@ public class MayBay {
 	private String name;
 	private int so_ghe;
 	private long nam_san_xuat;
+	private int chuyenbay_id;
 	
+	public int getChuyenbay_id() {
+		return chuyenbay_id;
+	}
+
+	public void setChuyenbay_id(int chuyenbay_id) {
+		this.chuyenbay_id = chuyenbay_id;
+	}
+
 	public MayBay() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public MayBay(String name, int so_ghe, long nam_san_xuat) {
+	public MayBay(String name, int so_ghe, long nam_san_xuat, int chuyenbay_id) {
 		super();
 		this.name = name;
 		this.so_ghe = so_ghe;
 		this.nam_san_xuat = nam_san_xuat;
+		this.chuyenbay_id = chuyenbay_id;
 	}
 
 

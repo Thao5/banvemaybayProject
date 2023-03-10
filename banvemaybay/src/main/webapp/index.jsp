@@ -1,3 +1,5 @@
+<%@page import="com.banvemaybay.model.ChuyenBay"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,12 +12,12 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-	<link rel="stylesheet"
+<link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script src="static/js/javascript.js"></script>
-<script src="static/js/index.js"></script>
+<script src="static/js/indexjs.js"></script>
 
 <meta charset="UTF-8">
 <title>Home</title>
@@ -43,7 +45,6 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body onload="startTime()">
-
 	<div class="header">
 		<div class="title">
 			<h1>Airline</h1>
@@ -57,24 +58,40 @@
 	<div class="search">
 		<div class="Main" id="main">
 			<div class="Holders">
-				<form method="post">
+				<form action="/banvemaybay/" method="post">
 					<div class="Ins">
 						<select id="tp" name="slb_diemDi">
 							<option value="" disabled selected>Chọn điểm đi</option>
-							<option value="1">TP.HCM</option>
-							<option value="2">Hanoi</option>
-							<option value="3">Vinh</option>
-							<option value="4">Da Nang</option>
+							<%
+							if (request.getAttribute("listaddresssb") != null) {
+								List<String> listaddress = (List<String>) request.getAttribute("listaddresssb");
+								if (listaddress.size() > 0) {
+									for (String address : listaddress) {
+							%>
+							<option value="<%=address%>"><%=address%></option>
+							<%
+							}
+							}
+							}
+							%>
 						</select> <select id="tp" name="slb_diemDen">
 							<option value="" disabled selected>Chọn điểm đến</option>
-							<option value="1">TP.HCM</option>
-							<option value="2">Hanoi</option>
-							<option value="3">Vinh</option>
-							<option value="4">Da Nang</option>
-						</select> 
-						<input type="text" aria-label="Last name" class="form-control txt-NgayDi" id="datepicker" name="txt_ngayDi" placeholder="Chọn ngày khởi điểm" font-weight:bold> 
-						<input type="text" aria-label="Last name" class="form-control txt-NgayVe" id="datepicker" name="txt_ngayVe" placeholder="Chọn ngày về" font-weight:bold> 
-						<input type="submit" value="Search">
+							<%
+							if (request.getAttribute("listaddresssb") != null) {
+								List<String> listaddress = (List<String>) request.getAttribute("listaddresssb");
+								if (listaddress.size() > 0) {
+									for (String address : listaddress) {
+							%>
+							<option value="<%=address%>"><%=address%></option>
+							<%
+							}
+							}
+							}
+							%>
+						</select> <input type="text" aria-label="Last name"
+							class="form-control txt-NgayDi" id="datepicker" name="txt_ngayDi"
+							placeholder="Chọn ngày khởi điểm" font-weight:bold> <input
+							type="submit" value="Search">
 					</div>
 				</form>
 			</div>
@@ -103,50 +120,28 @@
 						<thead>
 							<tr>
 								<th>Giờ khởi hành</th>
-								<th>Ngày khởi điểm</th>
-								<th>Ngày quay về</th>
+								<th>Tên chuyến bay</th>
 								<th>điểm đi</th>
 								<th>điểm đến</th>
 								<th>Giá vé</th>
 							</tr>
 						</thead>
 						<tbody>
+						<%if (request.getAttribute("listcb") != null){
+								List<ChuyenBay> listcb = (List<ChuyenBay>) request.getAttribute("listcb");	
+								if(listcb.size() > 0){
+									for(ChuyenBay cb : listcb){
+								%>
 							<tr>
-								<td><img class="airport-logo"
-									src="https://thuthuatnhanh.com/wp-content/uploads/2020/09/hinh-anh-tia-chop-mau-vang-ve.jpg"
-									alt="">
-									<p class="time">16h45</p>
-									<p>
-										<small>AirLine</small>
-									</p></td>
-								<td>Doe</td>
-								<td>john@example.com</td>
-								<td>500$</td>
+								<td><%=cb.getThoi_gian_xuat_phat() %> </td>
+								<td><%=cb.getName() %></td>
+								<td><%=cb.getDiem_di() %></td>
+								<td><%=cb.getDiem_den() %></td>
+								<td><%=cb.getGia_tien() %></td>
 							</tr>
-							<tr>
-								<td><img class="airport-logo"
-									src="https://wall.vn/wp-content/uploads/2019/11/hinh-nen-hoa-hong-dep-24.jpg"
-									alt="">
-									<p class="time">16h45</p>
-									<p>
-										<small>VietJet</small>
-									</p>
-								<td>Moe</td>
-								<td>mary@example.com</td>
-								<td>500$</td>
-							</tr>
-							<tr>
-								<td><img class="airport-logo"
-									src="https://wall.vn/wp-content/uploads/2019/11/hinh-nen-hoa-hong-dep-24.jpg"
-									alt="">
-									<p class="time">16h45</p>
-									<p>
-										<small>AirLine</small>
-									</p>
-								<td>Dooley</td>
-								<td>july@example.com</td>
-								<td>500$</td>
-							</tr>
+						<%}
+									}
+									}%>
 
 						</tbody>
 

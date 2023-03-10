@@ -3,7 +3,9 @@ package com.banvemaybay.services;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
+import com.banvemaybay.model.User;
 import com.mysql.cj.xdevapi.Statement;
 
 public class DatabaseConnection {
@@ -85,14 +87,20 @@ public class DatabaseConnection {
 		}
 	}
 	
-	public static void main(String[] args) {
-		Connection conn = getDatabaseConnection();
-		CreateDataBase(conn);
-		insertdata(conn);
-		if(conn != null) {
-			System.out.println("thanh cong");
-		} else {
-			System.out.println("that bai");
+	public static void main(String[] args) throws SQLException {
+//		Connection conn = getDatabaseConnection();
+//		CreateDataBase(conn);
+//		insertdata(conn);
+//		if(conn != null) {
+//			System.out.println("thanh cong");
+//		} else {
+//			System.out.println("that bai");
+//		}
+		
+		userServices u = new userServices();
+		List<User> users = u.getUsers();
+		for (User user : users) {
+			System.out.println(user.getName());
 		}
 	}
 }
