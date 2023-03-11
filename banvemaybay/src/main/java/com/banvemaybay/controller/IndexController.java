@@ -37,10 +37,10 @@ public class IndexController extends HttpServlet {
 			SanBayServices sbs = new SanBayServices();
 			List<String> listaddresssb = sbs.loadAddressSanBay();
 			ChuyenBayServices cbs = new ChuyenBayServices();
-			List<ChuyenBay> listsb;
-			listsb = cbs.getChuyenBays();
+			List<ChuyenBay> listcb;
+			listcb = cbs.getChuyenBays();
 			req.setAttribute("listaddresssb", listaddresssb);
-			req.setAttribute("listcb", listsb);
+			req.setAttribute("listcb", listcb);
 			RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
 			dispatcher.forward(req, resp);
 		} catch (SQLException e) {
@@ -53,9 +53,9 @@ public class IndexController extends HttpServlet {
 		SanBayServices sbs = new SanBayServices();
 		List<String> listaddresssb = sbs.loadAddressSanBay();
 		ChuyenBayServices cbs = new ChuyenBayServices();
-		List<ChuyenBay> listsb = cbs.getChuyenBays(request.getParameter("slb_diemDi"), request.getParameter("slb_diemDen"), request.getParameter("txt_ngayDi"));
+		List<ChuyenBay> listcb = cbs.getChuyenBays(request.getParameter("slb_diemDi"), request.getParameter("slb_diemDen"), request.getParameter("txt_ngayDi"));
 		request.setAttribute("listaddresssb", listaddresssb);
-		request.setAttribute("listcb", listsb);
+		request.setAttribute("listcb", listcb);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 		dispatcher.forward(request, response);
 	}
