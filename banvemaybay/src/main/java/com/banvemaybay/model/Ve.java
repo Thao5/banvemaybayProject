@@ -14,8 +14,9 @@ public class Ve {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Ve(double gia_tien, LocalDateTime ngay_xuat_ve, boolean trang_thai_ve, int chuyenbay_id, int booking_id) {
+	public Ve(int id, double gia_tien, LocalDateTime ngay_xuat_ve, boolean trang_thai_ve, int chuyenbay_id, int booking_id) {
 		super();
+		this.id = id;
 		this.gia_tien = gia_tien;
 		this.ngay_xuat_ve = ngay_xuat_ve;
 		this.trang_thai_ve = trang_thai_ve;

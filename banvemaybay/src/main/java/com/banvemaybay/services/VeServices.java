@@ -16,7 +16,7 @@ public class VeServices {
 			Statement stat = conn.createStatement();
 			ResultSet rs = stat.executeQuery("SELECT * FROM ve");
 			while(rs.next()) {
-				Ve ve = new Ve(rs.getDouble("gia_tien"), rs.getTimestamp("ngay_xuat_ve").toLocalDateTime(), rs.getBoolean("trang_thai_ve"), rs.getInt("chuyenbay_id"), rs.getInt("booking_id"));
+				Ve ve = new Ve(rs.getInt("id"),rs.getDouble("gia_tien"), rs.getTimestamp("ngay_xuat_ve").toLocalDateTime(), rs.getBoolean("trang_thai_ve"), rs.getInt("chuyenbay_id"), rs.getInt("booking_id"));
 				ves.add(ve);
 			}
 		}

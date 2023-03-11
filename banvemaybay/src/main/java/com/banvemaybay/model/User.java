@@ -16,6 +16,19 @@ public class User {
 	
 	
 	
+	public User(int id, String lastname, String name, String sdt, String email, String username, String password,
+			boolean admin) {
+		super();
+		this.id = id;
+		this.lastname = lastname;
+		this.name = name;
+		this.sdt = sdt;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.admin = admin;
+	}
+	
 	public User(String lastname, String name, String sdt, String email, String username, String password,
 			boolean admin) {
 		super();

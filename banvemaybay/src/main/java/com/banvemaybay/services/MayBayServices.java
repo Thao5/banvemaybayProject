@@ -16,7 +16,7 @@ public class MayBayServices {
 			Statement stat = conn.createStatement();
 			ResultSet rs = stat.executeQuery("SELECT * FROM may_bay");
 			while(rs.next()) {
-				MayBay mb = new MayBay(rs.getString("name"), rs.getInt("so_ghe"),rs.getLong("nam_san_xuat"), rs.getInt("chuyenbay_id"));
+				MayBay mb = new MayBay(rs.getInt("id"),rs.getString("name"), rs.getInt("so_ghe"),rs.getLong("nam_san_xuat"), rs.getInt("chuyenbay_id"));
 				mayBays.add(mb);
 			}
 		}

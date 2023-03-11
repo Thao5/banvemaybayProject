@@ -15,8 +15,9 @@ public class Booking {
 	
 	
 	
-	public Booking(LocalDateTime ngay_dat, boolean trang_thai_dat, int user_id, int chuyen_id) {
+	public Booking(int id, LocalDateTime ngay_dat, boolean trang_thai_dat, int user_id, int chuyen_id) {
 		super();
+		this.id = id;
 		this.ngay_dat = ngay_dat;
 		this.trang_thai_dat = trang_thai_dat;
 		this.user_id = user_id;

@@ -17,7 +17,7 @@ public class SanBayServices {
 			
 			ResultSet rs = stat.executeQuery("SELECT * FROM san_bay");
 			while(rs.next()) {
-				SanBay sanBay = new SanBay(rs.getString("name"), rs.getString("dia chi"), rs.getString("lien lac"));
+				SanBay sanBay = new SanBay(rs.getInt("id"),rs.getString("name"), rs.getString("dia chi"), rs.getString("lien lac"));
 				sanBays.add(sanBay);
 			}
 		}

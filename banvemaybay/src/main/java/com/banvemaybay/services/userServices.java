@@ -18,7 +18,7 @@ public class userServices {
 			Statement stat = conn.createStatement();
 			ResultSet rs = stat.executeQuery("SELECT * FROM user");
 			while(rs.next()) {
-				User user = new User(rs.getString("lastname"), rs.getString("name"), rs.getString("sdt"), rs.getString("email"), rs.getString("username"), rs.getString("password"), false);
+				User user = new User(rs.getInt("id"),rs.getString("lastname"), rs.getString("name"), rs.getString("sdt"), rs.getString("email"), rs.getString("username"), rs.getString("password"), false);
 				users.add(user);
 			}
 		}

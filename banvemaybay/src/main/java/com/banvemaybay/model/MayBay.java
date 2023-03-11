@@ -19,8 +19,9 @@ public class MayBay {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public MayBay(String name, int so_ghe, long nam_san_xuat, int chuyenbay_id) {
+	public MayBay(int id, String name, int so_ghe, long nam_san_xuat, int chuyenbay_id) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.so_ghe = so_ghe;
 		this.nam_san_xuat = nam_san_xuat;

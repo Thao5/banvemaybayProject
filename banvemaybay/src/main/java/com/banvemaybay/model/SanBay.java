@@ -6,8 +6,9 @@ public class SanBay {
 	private String dia_chi;
 	private String lien_lac;
 	
-	public SanBay(String name, String dia_chi, String lien_lac) {
+	public SanBay(int id, String name, String dia_chi, String lien_lac) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.dia_chi = dia_chi;
 		this.lien_lac = lien_lac;

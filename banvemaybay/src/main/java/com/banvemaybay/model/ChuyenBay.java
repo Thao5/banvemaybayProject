@@ -22,9 +22,10 @@ public class ChuyenBay {
 	
 	
 	
-	public ChuyenBay(String name, LocalDateTime thoi_gian_xuat_phat, LocalDateTime thoi_gian_den, int ghe_trong,
+	public ChuyenBay(int id, String name, LocalDateTime thoi_gian_xuat_phat, LocalDateTime thoi_gian_den, int ghe_trong,
 			String diem_di, String diem_den, double gia_tien, int sanbaydi_id, int sanbayden_id) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.thoi_gian_xuat_phat = thoi_gian_xuat_phat;
 		this.thoi_gian_den = thoi_gian_den;

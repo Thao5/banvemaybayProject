@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.banvemaybay.model.ChuyenBay;
+import com.mysql.cj.xdevapi.Result;
 
 public class ChuyenBayServices {
 	public List<ChuyenBay> getChuyenBays() throws SQLException{
@@ -19,7 +20,7 @@ public class ChuyenBayServices {
 			Statement stat = conn.createStatement();
 			ResultSet rs = stat.executeQuery("SELECT * FROM chuyen_bay");
 			while(rs.next()) {
-				ChuyenBay cb = new ChuyenBay(rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
+				ChuyenBay cb = new ChuyenBay(rs.getInt("id"),rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
 				cbs.add(cb);
 			}
 		}
@@ -41,7 +42,7 @@ public class ChuyenBayServices {
 				
 				ResultSet rs = stat.executeQuery();
 				while(rs.next()) {
-					ChuyenBay cb = new ChuyenBay(rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
+					ChuyenBay cb = new ChuyenBay(rs.getInt("id"),rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
 					cbs.add(cb);
 				}
 			}
@@ -54,7 +55,7 @@ public class ChuyenBayServices {
 				
 				ResultSet rs = stat.executeQuery();
 				while(rs.next()) {
-					ChuyenBay cb = new ChuyenBay(rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
+					ChuyenBay cb = new ChuyenBay(rs.getInt("id"),rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
 					cbs.add(cb);
 				}
 			}
@@ -67,7 +68,7 @@ public class ChuyenBayServices {
 				
 				ResultSet rs = stat.executeQuery();
 				while(rs.next()) {
-					ChuyenBay cb = new ChuyenBay(rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
+					ChuyenBay cb = new ChuyenBay(rs.getInt("id"),rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
 					cbs.add(cb);
 				}
 			}
@@ -80,7 +81,7 @@ public class ChuyenBayServices {
 				
 				ResultSet rs = stat.executeQuery();
 				while(rs.next()) {
-					ChuyenBay cb = new ChuyenBay(rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
+					ChuyenBay cb = new ChuyenBay(rs.getInt("id"),rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
 					cbs.add(cb);
 				}
 			}
@@ -92,7 +93,7 @@ public class ChuyenBayServices {
 				
 				ResultSet rs = stat.executeQuery();
 				while(rs.next()) {
-					ChuyenBay cb = new ChuyenBay(rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
+					ChuyenBay cb = new ChuyenBay(rs.getInt("id"),rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
 					cbs.add(cb);
 				}
 			}
@@ -104,7 +105,7 @@ public class ChuyenBayServices {
 				
 				ResultSet rs = stat.executeQuery();
 				while(rs.next()) {
-					ChuyenBay cb = new ChuyenBay(rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
+					ChuyenBay cb = new ChuyenBay(rs.getInt("id"),rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
 					cbs.add(cb);
 				}
 			}
@@ -116,7 +117,7 @@ public class ChuyenBayServices {
 				
 				ResultSet rs = stat.executeQuery();
 				while(rs.next()) {
-					ChuyenBay cb = new ChuyenBay(rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
+					ChuyenBay cb = new ChuyenBay(rs.getInt("id"),rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
 					cbs.add(cb);
 				}
 			}
@@ -130,4 +131,91 @@ public class ChuyenBayServices {
 		}
 		return cbs;
 	}
+	
+	public String getSBNameAdmin(int id) {
+		String res = "";
+		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
+			String sql = "select name from san_bay where id = ?";
+			PreparedStatement stml = conn.prepareStatement(sql);
+			stml.setInt(id, id);
+			
+			ResultSet rs = stml.executeQuery();
+			while(rs.next()) {
+				res = rs.getString("name");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
+	public List<ChuyenBay> getChuyenBays(String key){
+		List<ChuyenBay> listcb = new ArrayList<>();
+		ChuyenBayServices cbser = new ChuyenBayServices();
+		if(key == "")
+			try {
+				return cbser.getChuyenBays();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
+			String sql = "select * from chuyen_bay where id = ?";
+			PreparedStatement stml = conn.prepareStatement(sql);
+			stml.setInt(1, tryParse(key));
+			
+			ResultSet rs = stml.executeQuery();
+			while(rs.next()) {
+				ChuyenBay cb = new ChuyenBay(rs.getInt("id"),rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
+				listcb.add(cb);
+			}
+			if(!rs.next()) {
+				sql = "select * from chuyen_bay where name = ?";
+				stml = conn.prepareStatement(sql);
+				stml.setString(1, key);
+				
+				rs = stml.executeQuery();
+				while(rs.next()) {
+					ChuyenBay cb = new ChuyenBay(rs.getInt("id"),rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
+					listcb.add(cb);
+				}
+				if(!rs.next()) {
+					sql = "select * from chuyen_bay where diem_di = ?";
+					stml = conn.prepareStatement(sql);
+					stml.setString(1, key);
+					
+					rs = stml.executeQuery();
+					while(rs.next()) {
+						ChuyenBay cb = new ChuyenBay(rs.getInt("id"),rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
+						listcb.add(cb);
+					}
+					if(!rs.next()) {
+						sql = "select * from chuyen_bay where diem_den = ?";
+						stml = conn.prepareStatement(sql);
+						stml.setString(1, key);
+						
+						rs = stml.executeQuery();
+						while(rs.next()) {
+							ChuyenBay cb = new ChuyenBay(rs.getInt("id"),rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
+							listcb.add(cb);
+						}
+					}
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return listcb;
+	}
+	
+	public static Integer tryParse(String text) {
+		  try {
+		    return Integer.parseInt(text);
+		  } catch (NumberFormatException e) {
+		    return -1;
+		  }
+		}
 }

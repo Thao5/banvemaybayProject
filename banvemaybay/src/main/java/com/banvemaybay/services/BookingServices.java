@@ -14,9 +14,9 @@ public class BookingServices {
 		List<Booking> bookings = new ArrayList<>();
 		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
 			Statement stat = conn.createStatement();
-			ResultSet rs = stat.executeQuery("SELEC * FROM booking");
+			ResultSet rs = stat.executeQuery("SELECT * FROM booking");
 			while(rs.next()) {
-				Booking bk = new Booking(rs.getTimestamp("ngay_dat").toLocalDateTime(), rs.getBoolean("trang_thai_dat"), rs.getInt("user_id"), rs.getInt("chuyenbay_id"));
+				Booking bk = new Booking(rs.getInt("id"),rs.getTimestamp("ngay_dat").toLocalDateTime(), rs.getBoolean("trang_thai_dat"), rs.getInt("user_id"), rs.getInt("chuyenbay_id"));
 				bookings.add(bk);
 			}
 		}
