@@ -33,18 +33,31 @@ public class IndexController extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		SanBayServices sbs = new SanBayServices();
-		List<String> listaddresssb = sbs.loadAddressSanBay();
-		ChuyenBayServices cbs = new ChuyenBayServices();
-		List<ChuyenBay> listsb = cbs.getChuyenBays(req.getParameter("slb_diemDi"), req.getParameter("slb_diemDen"), req.getParameter("txt_ngayDi"));
-		req.setAttribute("listaddresssb", listaddresssb);
-		req.setAttribute("listcb", listsb);
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
-		dispatcher.forward(req, resp);
+		try {
+			SanBayServices sbs = new SanBayServices();
+			List<String> listaddresssb = sbs.loadAddressSanBay();
+			ChuyenBayServices cbs = new ChuyenBayServices();
+			List<ChuyenBay> listsb;
+			listsb = cbs.getChuyenBays();
+			req.setAttribute("listaddresssb", listaddresssb);
+			req.setAttribute("listcb", listsb);
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
+			dispatcher.forward(req, resp);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		SanBayServices sbs = new SanBayServices();
+		List<String> listaddresssb = sbs.loadAddressSanBay();
+		ChuyenBayServices cbs = new ChuyenBayServices();
+		List<ChuyenBay> listsb = cbs.getChuyenBays(request.getParameter("slb_diemDi"), request.getParameter("slb_diemDen"), request.getParameter("txt_ngayDi"));
+		request.setAttribute("listaddresssb", listaddresssb);
+		request.setAttribute("listcb", listsb);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

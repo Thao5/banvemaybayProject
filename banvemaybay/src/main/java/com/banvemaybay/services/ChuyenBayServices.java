@@ -29,7 +29,7 @@ public class ChuyenBayServices {
 	public List<ChuyenBay> getChuyenBays(String diem_di, String diem_den, String ngay_xuat_phat){
 		List<ChuyenBay> cbs = new ArrayList<>();
 		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
-			if(diem_di != null && diem_den != null && ngay_xuat_phat != null) {
+			if(diem_di != "" && diem_den != "" && ngay_xuat_phat != "") {
 	//			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 	//			LocalDateTime dateTime = LocalDateTime.parse(ngay_xuat_phat, formatter);
 				String sql = "SELECT thoi_gian_xuat_phat, thoi_gian_den, name, diem_di, diem_den, gia_tien from chuyen_bay "
@@ -45,7 +45,7 @@ public class ChuyenBayServices {
 					cbs.add(cb);
 				}
 			}
-			else if(diem_di != null && diem_den != null && ngay_xuat_phat == null) {
+			else if(diem_di != "" && diem_den != "" && ngay_xuat_phat == "") {
 				String sql = "SELECT thoi_gian_xuat_phat, thoi_gian_den, name, diem_di, diem_den, gia_tien from chuyen_bay "
 						+ "where diem_di = ? and diem_den = ?";
 				PreparedStatement stat = conn.prepareStatement(sql);
@@ -58,9 +58,9 @@ public class ChuyenBayServices {
 					cbs.add(cb);
 				}
 			}
-			else if(diem_di != null && diem_den == null && ngay_xuat_phat != null) {
+			else if(diem_di != "" && diem_den == "" && ngay_xuat_phat != "") {
 				String sql = "SELECT thoi_gian_xuat_phat, thoi_gian_den, name, diem_di, diem_den, gia_tien from chuyen_bay "
-						+ "where diem_di = ? and ngay_xuat_phat = ?";
+						+ "where diem_di = ? and thoi_gian_xuat_phat = ?";
 				PreparedStatement stat = conn.prepareStatement(sql);
 				stat.setString(1, diem_di);
 				stat.setString(2, ngay_xuat_phat);
@@ -71,9 +71,9 @@ public class ChuyenBayServices {
 					cbs.add(cb);
 				}
 			}
-			else if(diem_di == null && diem_den != null && ngay_xuat_phat != null) {
+			else if(diem_di == "" && diem_den != "" && ngay_xuat_phat != "") {
 				String sql = "SELECT thoi_gian_xuat_phat, thoi_gian_den, name, diem_di, diem_den, gia_tien from chuyen_bay "
-						+ "where diem_den = ? and ngay_xuat_phat = ?";
+						+ "where diem_den = ? and thoi_gian_xuat_phat = ?";
 				PreparedStatement stat = conn.prepareStatement(sql);
 				stat.setString(1, diem_den);
 				stat.setString(2, ngay_xuat_phat);
@@ -84,7 +84,7 @@ public class ChuyenBayServices {
 					cbs.add(cb);
 				}
 			}
-			else if(diem_di != null) {
+			else if(diem_di != "") {
 				String sql = "SELECT thoi_gian_xuat_phat, thoi_gian_den, name, diem_di, diem_den, gia_tien from chuyen_bay "
 						+ "where diem_di = ?";
 				PreparedStatement stat = conn.prepareStatement(sql);
@@ -96,7 +96,7 @@ public class ChuyenBayServices {
 					cbs.add(cb);
 				}
 			}
-			else if(diem_den != null) {
+			else if(diem_den != "") {
 				String sql = "SELECT thoi_gian_xuat_phat, thoi_gian_den, name, diem_di, diem_den, gia_tien from chuyen_bay "
 						+ "where diem_den = ?";
 				PreparedStatement stat = conn.prepareStatement(sql);
@@ -108,9 +108,9 @@ public class ChuyenBayServices {
 					cbs.add(cb);
 				}
 			}
-			else if(ngay_xuat_phat != null) {
+			else if(ngay_xuat_phat != "") {
 				String sql = "SELECT thoi_gian_xuat_phat, thoi_gian_den, name, diem_di, diem_den, gia_tien from chuyen_bay "
-						+ "where ngay_xuat_phat = ?";
+						+ "where thoi_gian_xuat_phat = ?";
 				PreparedStatement stat = conn.prepareStatement(sql);
 				stat.setString(1, ngay_xuat_phat);
 				

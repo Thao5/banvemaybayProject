@@ -58,10 +58,10 @@
 	<div class="search">
 		<div class="Main" id="main">
 			<div class="Holders">
-				<form action="/banvemaybay/" method="post">
+				<form action="/banvemaybay/index" method="post">
 					<div class="Ins">
 						<select id="tp" name="slb_diemDi">
-							<option value="" disabled selected>Chọn điểm đi</option>
+							<option value="" selected>Chọn điểm đi(tất cả)</option>
 							<%
 							if (request.getAttribute("listaddresssb") != null) {
 								List<String> listaddress = (List<String>) request.getAttribute("listaddresssb");
@@ -75,7 +75,7 @@
 							}
 							%>
 						</select> <select id="tp" name="slb_diemDen">
-							<option value="" disabled selected>Chọn điểm đến</option>
+							<option value="" selected>Chọn điểm đến(tất cả)</option>
 							<%
 							if (request.getAttribute("listaddresssb") != null) {
 								List<String> listaddress = (List<String>) request.getAttribute("listaddresssb");
