@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.banvemaybay.model.ChuyenBay;
+import com.banvemaybay.model.SanBay;
 import com.banvemaybay.services.ChuyenBayServices;
+import com.banvemaybay.services.SanBayServices;
 
 /**
  * Servlet implementation class AdminChuyenBayController
@@ -35,8 +37,12 @@ public class AdminChuyenBayController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			ChuyenBayServices cbs = new ChuyenBayServices();
+			SanBayServices sbs = new SanBayServices();
+			List<String> listsb;
 			List<ChuyenBay> listcb;
+			listsb = sbs.loadNameSB();
 			listcb = cbs.getChuyenBays();
+			request.setAttribute("listsb", listsb);
 			request.setAttribute("listcb", listcb);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/chuyenbay.jsp");
 			dispatcher.forward(request, response);
@@ -54,8 +60,9 @@ public class AdminChuyenBayController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		ChuyenBayServices cbs = new ChuyenBayServices();
 		List<ChuyenBay> listcb;
-		String key = request.getParameter("key");
 		listcb = cbs.getChuyenBays(request.getParameter("key"));
+		String test = request.getParameter("slb_SBDi");
+		boolean check = cbs.themCB(request.getParameter("name_Fly"), request.getParameter("time_di"), request.getParameter("time_den"), request.getParameter("quantity"), request.getParameter("diem_di"), request.getParameter("diem_den"), request.getParameter("giaTien"), request.getParameter("slb_SBDi"), request.getParameter("slb_SBDen"));
 		request.setAttribute("listcb", listcb);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/chuyenbay.jsp");
 		dispatcher.forward(request, response);

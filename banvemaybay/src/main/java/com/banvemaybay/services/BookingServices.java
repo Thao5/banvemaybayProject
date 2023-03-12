@@ -1,6 +1,7 @@
 package com.banvemaybay.services;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -21,5 +22,22 @@ public class BookingServices {
 			}
 		}
 		return bookings;
+	}
+	
+	public void themBooking(Booking book) {
+		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
+			String sql = "insert into booking(ngay_dat, trang_thai_dat, user_id, chuyenbay_id) values(?,?,?,?)";
+			PreparedStatement stat = conn.prepareStatement(sql);
+			
+			stat.setString(1, book.getNgay_dat().toString());
+			stat.setBoolean(2, book.isTrang_thai_dat());
+			stat.setInt(3, book.getUser_id());
+			stat.setInt(4, book.getChuyen_id());
+			
+			stat.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

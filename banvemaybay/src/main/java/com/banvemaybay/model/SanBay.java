@@ -13,6 +13,13 @@ public class SanBay {
 		this.dia_chi = dia_chi;
 		this.lien_lac = lien_lac;
 	}
+	
+	public SanBay(String name, String dia_chi, String lien_lac) {
+		super();
+		this.name = name;
+		this.dia_chi = dia_chi;
+		this.lien_lac = lien_lac;
+	}
 
 	public SanBay() {
 		// TODO Auto-generated constructor stub

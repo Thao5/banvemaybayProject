@@ -28,7 +28,13 @@ public class MayBay {
 		this.chuyenbay_id = chuyenbay_id;
 	}
 
-
+	public MayBay(String name, int so_ghe, long nam_san_xuat, int chuyenbay_id) {
+		super();
+		this.name = name;
+		this.so_ghe = so_ghe;
+		this.nam_san_xuat = nam_san_xuat;
+		this.chuyenbay_id = chuyenbay_id;
+	}
 
 	public int getId() {
 		return id;

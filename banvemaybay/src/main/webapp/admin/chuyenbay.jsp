@@ -33,7 +33,7 @@
     </head>
     <body>
          <!-- start of navbar -->
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <div class="container-fluid">
               <a class="navbar-brand" href="admin.jsp">Admin</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -41,15 +41,30 @@
               </button>
               <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="navbar-nav me-auto">
-                  <li class="nav-item">
-                    <a class="nav-link" href="chuyenbay.jsp">Chuyến bay</a>
+                   <li class="nav-item">
+                    <a class="nav-link" href="/banvemaybay/admin/ChuyenBay">Chuyến bay</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="thongke.jsp">Thống kê</a>
+                    <a class="nav-link" href="/banvemaybay/admin/ve">Vé</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/banvemaybay/admin/booking">Booking</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/banvemaybay/admin/maybay">Máy bay</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/banvemaybay/admin/sanbay">Sân bay</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/banvemaybay/admin/user">User</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/banvemaybay/admin/thongke.jsp">Thống kê</a>
                   </li>
                  
                 </ul>
-                <form class="d-flex" method="post">
+               <form class="d-flex" method="post">
                   <input name = "key" class="form-control me-2" type="text" placeholder="Search">
                   <input class="btn btn-primary" type="submit">
                 </form>
@@ -102,36 +117,31 @@
               </table>
 
            </div>
-           <button class="btn btn-primary" id="btn-them" onclick="btnThem()" type="button">Thêm</button>
+           
         
            <div class="col-sm-12">
 			
 			<div>
 				<form action="" method="post">
 					<div class="row">
-						<div class="form-floating mb-1 mt-3 col-sm-1">
-							<input type="text" class="form-control" id="id_chuyenbay"
-								 placeholder="ID" name="id_chuyenbay">
-							<label for="id-chuyenaby ">ID</label>
-						</div>
 						<div class="form-floating mb-1 mt-3 col-sm-2" >
 							<input type="text" class="form-control" id="name_Fly"
 								required placeholder="Name*" name="name_Fly"> <label
 								for="name_Fly">Name*</label>
 						</div>
                         <div class="form-floating mb-1 mt-3 col-sm-2" >
-							<input type="datetime" class="form-control" id="time_di"
+							<input type="datetime-local" class="form-control" id="time_di"
 								required placeholder="Ngày đi" name="time_di"> <label
 								for="time_di">Thời gian đi</label>
 						</div>
                         <div class="form-floating mb-1 mt-3 col-sm-2" >
-							<input type="datetime" class="form-control" id="time_den"
+							<input type="datetime-local" class="form-control" id="time_den"
 								required placeholder="Ngày đến*" name="time_den"> <label
 								for="time_den">Thời gian đến</label>
 						</div>
                         <div class="form-floating mb-1 mt-3 col-sm-1" >
 							<input type="number" class="form-control" id="quatity"
-								required placeholder="Số lượng*" name="quatity"> <label
+								required placeholder="Số lượng*" name="quantity"> <label
 								for="quatity">Số lượng ghế</label>
 						</div>
                         <div class="form-floating mb-1 mt-3 col-sm-1" >
@@ -149,9 +159,38 @@
 								required placeholder="giaTien*" name="giaTien"> <label
 								for="giaTien">Giá tiền*</label>
 						</div>
-
+						<div class="form-floating mb-1 mt-3 col-sm-1" >
+							<select name="slb_SBDi">
+								<option value="" selected>Sân Bay Đi</option>
+								<%if(request.getAttribute("listsb") != null){
+									List<String> listsb = (List<String>) request.getAttribute("listsb");
+									if(listsb.size() > 0){
+										for(String s : listsb){
+											
+									%>
+									<option value = "<%=s %>"> <%=s %> </option>
+									<%}
+										}
+										}%>
+							</select>
+						</div>
+						<div>
+							<select name="slb_SBDen">
+								<option value="" selected>Sân Bay Đến</option>
+								<%if(request.getAttribute("listsb") != null){
+									List<String> listsb = (List<String>) request.getAttribute("listsb");
+									if(listsb.size() > 0){
+										for(String s : listsb){
+											
+									%>
+									<option value = "<%=s %>"> <%=s %> </option>
+									<%}
+										}
+										}%>
+							</select>
+						</div>
 					</div>
-					
+					<input class="btn btn-primary" id="btn-them" type="submit">
 					
 				</form>
 			</div>

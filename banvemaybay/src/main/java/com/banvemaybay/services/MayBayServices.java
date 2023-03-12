@@ -1,6 +1,7 @@
 package com.banvemaybay.services;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -21,5 +22,22 @@ public class MayBayServices {
 			}
 		}
 		return mayBays;
+	}
+	
+	public void themMB(MayBay mb) {
+		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
+			String sql = "insert into may_bay(name, so_ghe, nam_san_xuat, chuyenbay_id) values(?,?,?,?)";
+			PreparedStatement stat = conn.prepareStatement(sql);
+			
+			stat.setString(1, mb.getName());
+			stat.setInt(2, mb.getSo_ghe());
+			stat.setLong(3, mb.getNam_san_xuat());
+			stat.setInt(4, mb.getChuyenbay_id());
+			
+			stat.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

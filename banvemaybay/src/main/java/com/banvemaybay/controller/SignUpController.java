@@ -61,8 +61,6 @@ public class SignUpController extends HttpServlet {
 		md.update(request.getParameter("pw_confirm").getBytes());
 		digest = md.digest();
 		String pw_conf = Base64.getEncoder().encodeToString(digest);
-		System.out.println(password);
-		System.out.println(pw_conf);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/signup.jsp");
 		dispatcher.forward(request, response);
 		if(!password.equals(pw_conf) || password.length() > 20 || password.length() < 6) return;

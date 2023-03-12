@@ -23,6 +23,14 @@ public class Booking {
 		this.user_id = user_id;
 		this.chuyen_id = chuyen_id;
 	}
+	
+	public Booking(LocalDateTime ngay_dat, boolean trang_thai_dat, int user_id, int chuyen_id) {
+		super();
+		this.ngay_dat = ngay_dat;
+		this.trang_thai_dat = trang_thai_dat;
+		this.user_id = user_id;
+		this.chuyen_id = chuyen_id;
+	}
 
 
 

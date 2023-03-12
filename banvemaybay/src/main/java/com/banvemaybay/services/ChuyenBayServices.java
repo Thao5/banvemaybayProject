@@ -211,6 +211,32 @@ public class ChuyenBayServices {
 		return listcb;
 	}
 	
+	public boolean themCB(String name, String thoi_gian_xuat_phat, String thoi_gian_den, String ghe_trong, String diem_di, String diem_den, String gia_tien, String san_bay_di, String san_bay_den) {
+		if(name == null || thoi_gian_xuat_phat == null || thoi_gian_den == null) return false;
+		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
+			SanBayServices sbs = new SanBayServices();
+			String sql = "insert into chuyen_bay(name, thoi_gian_xuat_phat, thoi_gian_den, ghe_trong, diem_di, diem_den, gia_tien, sanbaydi_id, sanbayden_id) values(?,?,?,?,?,?,?,?,?)";
+			PreparedStatement stml = conn.prepareStatement(sql);
+			
+			stml.setString(1, name);
+			stml.setString(2, thoi_gian_xuat_phat);
+			stml.setString(3, thoi_gian_den);
+			stml.setInt(4, tryParse(ghe_trong));
+			stml.setString(5, diem_di);
+			stml.setString(6, diem_den);
+			stml.setDouble(7, Double.parseDouble(gia_tien));
+			stml.setInt(8, sbs.findID(san_bay_di));
+			stml.setInt(9, sbs.findID(san_bay_den));
+			
+			stml.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	public static Integer tryParse(String text) {
 		  try {
 		    return Integer.parseInt(text);

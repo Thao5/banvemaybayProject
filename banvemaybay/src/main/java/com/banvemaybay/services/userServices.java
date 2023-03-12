@@ -18,7 +18,7 @@ public class userServices {
 			Statement stat = conn.createStatement();
 			ResultSet rs = stat.executeQuery("SELECT * FROM user");
 			while(rs.next()) {
-				User user = new User(rs.getInt("id"),rs.getString("lastname"), rs.getString("name"), rs.getString("sdt"), rs.getString("email"), rs.getString("username"), rs.getString("password"), false);
+				User user = new User(rs.getInt("id"),rs.getString("lastname"), rs.getString("name"), rs.getString("sdt"), rs.getString("email"), rs.getString("username"), rs.getString("password"), rs.getBoolean("admin"));
 				users.add(user);
 			}
 		}
@@ -42,5 +42,71 @@ public class userServices {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public List<User> getUsers(String key){
+		List<User> listuser = new ArrayList<>();
+		userServices userserv = new userServices();
+		if(key == "") {
+			try {
+				return userserv.getUsers();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
+			String sql = "select * from user where id = ?";
+			PreparedStatement stat = conn.prepareStatement(sql);
+			
+			stat.setInt(1, ChuyenBayServices.tryParse(key));
+			
+			ResultSet rs = stat.executeQuery();
+			if(rs.next()) {
+				
+			
+				do{
+					User u = new User(rs.getInt("id"), rs.getString("lastname"), rs.getString("name"), rs.getString("sdt"), rs.getString("email"), rs.getString("username"), rs.getString("password"), rs.getBoolean("admin"));
+					listuser.add(u);
+				}while(rs.next()) ;
+				return listuser;
+			}
+				sql = "select * from user where name = ?";
+				stat = conn.prepareStatement(sql);
+				
+				stat.setString(1, key);
+				
+				rs = stat.executeQuery();
+				if(rs.next()) {
+					
+					
+					do{
+						User u = new User(rs.getInt("id"), rs.getString("lastname"), rs.getString("name"), rs.getString("sdt"), rs.getString("email"), rs.getString("username"), rs.getString("password"), rs.getBoolean("admin"));
+						listuser.add(u);
+					}while(rs.next());
+					return listuser;
+				}
+					sql = "select * from user where username = ?";
+					stat = conn.prepareStatement(sql);
+					
+					stat.setString(1, key);
+					
+					rs = stat.executeQuery();
+					if(rs.next()) {
+						
+						
+						do{
+							User u = new User(rs.getInt("id"), rs.getString("lastname"), rs.getString("name"), rs.getString("sdt"), rs.getString("email"), rs.getString("username"), rs.getString("password"), rs.getBoolean("admin"));
+							listuser.add(u);
+						}while(rs.next()) ;
+						return listuser;
+					}
+				
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return listuser;
 	}
 }

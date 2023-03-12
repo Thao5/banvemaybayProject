@@ -38,17 +38,32 @@
               </button>
               <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="navbar-nav me-auto">
-                  <li class="nav-item">
-                    <a class="nav-link" href="chuyenbay.jsp">Chuyến bay</a>
+                   <li class="nav-item">
+                    <a class="nav-link" href="/banvemaybay/admin/ChuyenBay">Chuyến bay</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="thongke.jsp">Thống kê</a>
+                    <a class="nav-link" href="/banvemaybay/admin/ve">Vé</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/banvemaybay/admin/booking">Booking</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/banvemaybay/admin/maybay">Máy bay</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/banvemaybay/admin/sanbay">Sân bay</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/banvemaybay/admin/user">User</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/banvemaybay/admin/thongke.jsp">Thống kê</a>
                   </li>
                  
                 </ul>
-                <form class="d-flex">
-                  <input class="form-control me-2" type="text" placeholder="Search">
-                  <button class="btn btn-primary" type="button">Search</button>
+               <form class="d-flex" method="post">
+                  <input name = "key" class="form-control me-2" type="text" placeholder="Search">
+                  <input class="btn btn-primary" type="submit">
                 </form>
               </div>
             </div>

@@ -42,6 +42,21 @@
                     <a class="nav-link" href="chuyenbay.jsp">Chuyến bay</a>
                   </li>
                   <li class="nav-item">
+                    <a class="nav-link" href="ve.jsp">Vé</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="book.jsp">Booking</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="maybay.jsp">Máy bay</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="sanbay.jsp">Sân bay</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="user.jsp">User</a>
+                  </li>
+                  <li class="nav-item">
                     <a class="nav-link" href="thongke.jsp">Thống kê</a>
                   </li>
                  
