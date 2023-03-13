@@ -1,3 +1,6 @@
+<%@page import="com.banvemaybay.model.ThongKe"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -79,20 +82,21 @@
                 <div class="content">
                     <table id="table_thong_ke" >
                       <tr>
-                          <th>Tên hãng</th>
-                          <th>Số lượng</th>
+                          <th>Chuyến bay</th>
+                          <th>Số lượng vé</th>
                           
                         </tr>
-                      <tr ></tr>
-                        <td id="name_hang">AirLine</td>
-                        <td id="number_fly">50</td>
-                        
-                      </tr>
+                        <%if(request.getAttribute("thongke") != null){
+                        	List<ThongKe> thongke = (List<ThongKe>) request.getAttribute("thongke");
+                        	if(thongke.size() > 0){
+                        		for(ThongKe tk: thongke){
+                        	%>
                       <tr >
-                        <td id="name_hang">VietJet</td>
-                        <td id="number_fly">200</td>
+                        <td><%=tk.getName() %></td>
+                        <td><%=tk.getSoLuongVe() %></td>
                         
                       </tr>
+                      <%}}} %>
                     </table>
                     </div>
               
@@ -111,20 +115,21 @@
                 <div class="content">
                     <table id="table_thong_ke" >
                       <tr>
-                          <th>Tên hãng</th>
+                          <th>Chuyến bay</th>
                           <th>Doanh thu</th>
                           
                         </tr>
-                      <tr ></tr>
-                        <td id="name_hang">AirLine</td>
-                        <td id="number_fly">500000</td>
-                        
-                      </tr>
+                        <%if(request.getAttribute("thongke") != null){
+                        	List<ThongKe> thongke = (List<ThongKe>) request.getAttribute("thongke");
+                        	if(thongke.size() > 0){
+                        		for(ThongKe tk: thongke){
+                        	%>
                       <tr >
-                        <td id="name_hang">VietJet</td>
-                        <td id="number_fly">550000</td>
+                        <td><%=tk.getName() %></td>
+                        <td><%=tk.getDoanhThu() %></td>
                         
                       </tr>
+                      <%}}} %>
                     </table>
                     </div>
               
@@ -146,8 +151,27 @@
 </div>
 
 <script>
-var xValues = ["AirLine", "VietJet"]; // truyền tên dữ liệu cần thống kê
-var yValues = [150,150]; // truyền số liệu
+	
+	var xValues = []; // truyền tên dữ liệu cần thống kê
+	var yValues = []; // truyền số liệu
+	<%if(request.getAttribute("thongke") != null){
+		List<ThongKe> thongke = (List<ThongKe>) request.getAttribute("thongke");
+		List<String> name = new ArrayList<>();
+		List<Integer> soluongve = new ArrayList<>();
+		if(thongke.size() > 0){
+			for(ThongKe tk: thongke){
+				name.add(tk.getName());
+				soluongve.add(tk.getSoLuongVe());
+			}
+		}
+		for(String s: name){%>
+		xValues.push('<%=s%>');
+		<%}%>
+		<%for(int i: soluongve){
+		%>
+		yValues.push('<%=i%>');
+		<%}
+		}%>
 var barColors = ["red", "green","blue ","orange","brown"]; // màu
 
 new Chart("myChart", {
@@ -169,8 +193,27 @@ new Chart("myChart", {
 });
 </script>
 <script>
-    var xValues = ["AirLine", "VietJet"]; // truyền tên dữ liệu cần thống kê
-    var yValues = [550000, 550000]; // truyền số liệu
+var xValues = [];// truyền tên dữ liệu cần thống kê
+var yValues = [];// truyền số liệu
+<%if(request.getAttribute("thongke") != null){
+	List<ThongKe> thongke = (List<ThongKe>) request.getAttribute("thongke");
+	List<String> name = new ArrayList<>();
+	List<Double> doanhthu = new ArrayList<>();
+	if(thongke.size() > 0){
+		for(ThongKe tk: thongke){
+			name.add(tk.getName());
+			doanhthu.add(tk.getDoanhThu());
+		}
+	}
+for(String s: name){%>
+xValues.push('<%=s%>');
+<%}%>
+<%for(double i: doanhthu){
+%>
+yValues.push('<%=i%>');
+<%}
+}%>
+
     var barColors = ["red", "green","blue ","orange","brown"]; // màu
     
     new Chart("mychart", {

@@ -38,26 +38,26 @@
               </button>
               <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="navbar-nav me-auto">
-                  <li class="nav-item">
-                    <a class="nav-link" href="chuyenbay.jsp">Chuyến bay</a>
+                   <li class="nav-item">
+                    <a class="nav-link" href="/banvemaybay/admin/ChuyenBay">Chuyến bay</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="ve.jsp">Vé</a>
+                    <a class="nav-link" href="/banvemaybay/admin/ve">Vé</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="book.jsp">Booking</a>
+                    <a class="nav-link" href="/banvemaybay/admin/booking">Booking</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="maybay.jsp">Máy bay</a>
+                    <a class="nav-link" href="/banvemaybay/admin/maybay">Máy bay</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="sanbay.jsp">Sân bay</a>
+                    <a class="nav-link" href="/banvemaybay/admin/sanbay">Sân bay</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="user.jsp">User</a>
+                    <a class="nav-link" href="/banvemaybay/admin/user">User</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="thongke.jsp">Thống kê</a>
+                    <a class="nav-link" href="/banvemaybay/admin/thongke.jsp">Thống kê</a>
                   </li>
                  
                 </ul>

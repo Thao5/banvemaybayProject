@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.banvemaybay.model.ChuyenBay;
+import com.banvemaybay.model.ThongKe;
 import com.mysql.cj.xdevapi.Result;
 
 public class ChuyenBayServices {
@@ -235,6 +236,24 @@ public class ChuyenBayServices {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	public List<ThongKe> thongKe(){
+		List<ThongKe> thongke = new ArrayList<>();
+		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
+			String sql = "select chuyen_bay.name, (select count(*) from ve where ve.chuyenbay_id = chuyen_bay.id) as soluong, (chuyen_bay.gia_tien * (select count(*) from ve where ve.chuyenbay_id = chuyen_bay.id)) as doanhthu from chuyen_bay";
+			Statement stat = conn.createStatement();
+			
+			ResultSet rs = stat.executeQuery(sql);
+			while(rs.next()) {
+				thongke.add(new ThongKe(rs.getString("name"), rs.getInt("soluong"), rs.getDouble("doanhthu")));
+			}
+			return thongke;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return thongke;
 	}
 	
 	public static Integer tryParse(String text) {
