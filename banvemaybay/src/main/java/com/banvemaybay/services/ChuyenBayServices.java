@@ -34,7 +34,7 @@ public class ChuyenBayServices {
 			if(diem_di != "" && diem_den != "" && ngay_xuat_phat != "") {
 	//			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 	//			LocalDateTime dateTime = LocalDateTime.parse(ngay_xuat_phat, formatter);
-				String sql = "SELECT thoi_gian_xuat_phat, thoi_gian_den, name, diem_di, diem_den, gia_tien from chuyen_bay "
+				String sql = "SELECT * from chuyen_bay "
 						+ "where thoi_gian_xuat_phat = ? and diem_di = ? and diem_den = ?";
 				PreparedStatement stat = conn.prepareStatement(sql);
 				stat.setString(1, ngay_xuat_phat);
@@ -48,7 +48,7 @@ public class ChuyenBayServices {
 				}
 			}
 			else if(diem_di != "" && diem_den != "" && ngay_xuat_phat == "") {
-				String sql = "SELECT thoi_gian_xuat_phat, thoi_gian_den, name, diem_di, diem_den, gia_tien from chuyen_bay "
+				String sql = "SELECT * from chuyen_bay "
 						+ "where diem_di = ? and diem_den = ?";
 				PreparedStatement stat = conn.prepareStatement(sql);
 				stat.setString(1, diem_di);
@@ -61,7 +61,7 @@ public class ChuyenBayServices {
 				}
 			}
 			else if(diem_di != "" && diem_den == "" && ngay_xuat_phat != "") {
-				String sql = "SELECT thoi_gian_xuat_phat, thoi_gian_den, name, diem_di, diem_den, gia_tien from chuyen_bay "
+				String sql = "SELECT * from chuyen_bay "
 						+ "where diem_di = ? and thoi_gian_xuat_phat = ?";
 				PreparedStatement stat = conn.prepareStatement(sql);
 				stat.setString(1, diem_di);
@@ -74,7 +74,7 @@ public class ChuyenBayServices {
 				}
 			}
 			else if(diem_di == "" && diem_den != "" && ngay_xuat_phat != "") {
-				String sql = "SELECT thoi_gian_xuat_phat, thoi_gian_den, name, diem_di, diem_den, gia_tien from chuyen_bay "
+				String sql = "SELECT * from chuyen_bay "
 						+ "where diem_den = ? and thoi_gian_xuat_phat = ?";
 				PreparedStatement stat = conn.prepareStatement(sql);
 				stat.setString(1, diem_den);
@@ -87,7 +87,7 @@ public class ChuyenBayServices {
 				}
 			}
 			else if(diem_di != "") {
-				String sql = "SELECT thoi_gian_xuat_phat, thoi_gian_den, name, diem_di, diem_den, gia_tien from chuyen_bay "
+				String sql = "SELECT * from chuyen_bay "
 						+ "where diem_di = ?";
 				PreparedStatement stat = conn.prepareStatement(sql);
 				stat.setString(1, diem_di);
@@ -99,7 +99,7 @@ public class ChuyenBayServices {
 				}
 			}
 			else if(diem_den != "") {
-				String sql = "SELECT thoi_gian_xuat_phat, thoi_gian_den, name, diem_di, diem_den, gia_tien from chuyen_bay "
+				String sql = "SELECT * from chuyen_bay "
 						+ "where diem_den = ?";
 				PreparedStatement stat = conn.prepareStatement(sql);
 				stat.setString(1, diem_den);
@@ -111,7 +111,7 @@ public class ChuyenBayServices {
 				}
 			}
 			else if(ngay_xuat_phat != "") {
-				String sql = "SELECT thoi_gian_xuat_phat, thoi_gian_den, name, diem_di, diem_den, gia_tien from chuyen_bay "
+				String sql = "SELECT * from chuyen_bay "
 						+ "where thoi_gian_xuat_phat = ?";
 				PreparedStatement stat = conn.prepareStatement(sql);
 				stat.setString(1, ngay_xuat_phat);

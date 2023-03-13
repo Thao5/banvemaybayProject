@@ -63,7 +63,7 @@ public class SignUpController extends HttpServlet {
 		String pw_conf = Base64.getEncoder().encodeToString(digest);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/signup.jsp");
 		dispatcher.forward(request, response);
-		if(!password.equals(pw_conf) || password.length() > 20 || password.length() < 6) return;
+		if(!password.equals(pw_conf)) return;
 		User u = new User(lastname, name, phone, email, username, password, false);
 		userServices us = new userServices();
 		us.signUpUser(u);

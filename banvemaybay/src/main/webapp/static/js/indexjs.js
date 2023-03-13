@@ -12,4 +12,6 @@ $(document).ready(function() {
     document.getElementById('login-form2').style.display ='block';
   });
 });
-
+$(document).ready(function(){
+        $('.dropdown-toggle').dropdown()
+});

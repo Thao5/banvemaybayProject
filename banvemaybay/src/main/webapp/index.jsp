@@ -1,4 +1,6 @@
 <%@page import="com.banvemaybay.model.ChuyenBay"%>
+<%@page import="com.banvemaybay.controller.SignInController"%>
+<%@ page import="com.banvemaybay.controller.SignOutController"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -10,8 +12,6 @@
 <script src="static/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 <script
@@ -33,11 +33,6 @@
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
 
-
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-	crossorigin="anonymous"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -49,10 +44,51 @@
 		<div class="title">
 			<h1>Airline</h1>
 		</div>
-		<nav>
-			<a href="index.jsp">Flights</a> <a href="#" id="signin">Sign in</a> <a
+		<%
+		String name = (String) session.getAttribute("user");
+		if (name == null) {
+		%>
+		<nav style="text-align: center;">
+			<a href="/banvemaybay/index"
+				style="background-color: rgba(255, 255, 255, 0.9); text-align: center;">Flights</a>
+			<a href="signin.jsp" id="signin"
+				style="background-color: rgba(255, 255, 255, 0.9);">Sign in</a> <a
 				href="signup.jsp" id="signup">Sign up</a>
 		</nav>
+		<%
+		} else {
+		%>
+		<nav style = "margin-right: 0.5rem;">
+		<a href="/banvemaybay/index"
+				style="background-color: rgba(255, 255, 255, 0.9); text-align: center;">Flights</a>
+		</nav>
+		<div class = "dropdown">
+			<form action="signout" method="post">
+				<button type="button" class="btn btn-light dropdown-toggle"
+					style="width: 8rem; text-align: center;" data-bs-toggle="dropdown">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+					style=" margin-right: 0.5rem;"
+						fill="currentColor" class="bi bi-person-circle"
+						viewBox="0 0 16 16">
+  						<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+  						<path fill-rule="evenodd"
+							d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+					</svg>
+					<%
+					out.print(name);
+					%>
+				</button>
+				<ul class="dropdown-menu">
+					<li><input type="submit" value="Sign Out"
+						class="dropdown-item"></li>
+				</ul>
+			</form>
+		</div>
+	</div>
+
+	<%
+	}
+	%>
 	</div>
 	<!-- end of navbar -->
 	<div class="search">

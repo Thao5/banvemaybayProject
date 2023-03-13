@@ -42,7 +42,7 @@
 			<h1>Airline</h1>
 		</div>
 		<nav>
-			<a href="index.jsp">Flights</a> <a href="#" id="signin">Sign in</a> <a
+			<a href="/banvemaybay/index">Flights</a> <a href="signin.jsp" id="signin">Sign in</a> <a
 				href="signup.jsp" id="signup">Sign up</a>
 		</nav>
 	</div>

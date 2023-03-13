@@ -50,6 +50,7 @@ public class IndexController extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		SanBayServices sbs = new SanBayServices();
 		List<String> listaddresssb = sbs.loadAddressSanBay();
 		ChuyenBayServices cbs = new ChuyenBayServices();

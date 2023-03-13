@@ -32,10 +32,18 @@
          <!-- start of navbar -->
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <div class="container-fluid">
+            <%
+			String name = (String) session.getAttribute("user");
+			if(name == null){
+			%>
               <a class="navbar-brand" href="admin.jsp">Admin</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                 <span class="navbar-toggler-icon"></span>
               </button>
+              <% } %>
+              <%
+		if (name != null && (Boolean) session.getAttribute("isadmin") == true) {
+		%>
               <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="navbar-nav me-auto">
                    <li class="nav-item">
@@ -57,32 +65,39 @@
                     <a class="nav-link" href="/banvemaybay/admin/user">User</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/banvemaybay/admin/thongke.jsp">Thống kê</a>
+                    <a class="nav-link" href="/banvemaybay/admin/thongke">Thống kê</a>
                   </li>
-                 
+                 <li class="nav-item">
+                    <a class="nav-link" href="/banvemaybay/admin/signoutadmin">Sign out</a>
+                  </li>
                 </ul>
                 <form class="d-flex">
                   <input class="form-control me-2" type="text" placeholder="Search">
                   <button class="btn btn-primary" type="button">Search</button>
                 </form>
               </div>
+              <%} %>
             </div>
           </nav>
            <!-- end of navbar -->
 
             <!-- form sign in -->
+            <%
+			if(name == null){
+			%>
           <div class="form-login">
             <h3 class="signin">Login</h3>
-            <form action="/action_page.php">
-                <label for="fname">Email</label>
-                <input type="text" id="fname" class="login-email" name="login-email" placeholder="Enter your email...">
+            <form action="/banvemaybay/admin" method = "post">
+                <label for="fname">Username</label>
+                <input type="text" id="fname" class="login-email" name="username" placeholder="Enter your username...">
             
                 <label for="lname">Password</label>
-                <input type="text" id="lname" class="login-password" name="login-password" placeholder="Enter your password...">
+                <input type="password" id="lname" class="login-password" name="password" placeholder="Enter your password...">
             
             
                 <input type="submit" value="Submit">
             </div>
+            <%} %>
       
              <!-- end form-->
         

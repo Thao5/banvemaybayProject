@@ -59,9 +59,11 @@
                     <a class="nav-link" href="/banvemaybay/admin/user">User</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/banvemaybay/admin/thongke.jsp">Thống kê</a>
+                    <a class="nav-link" href="/banvemaybay/admin/thongke">Thống kê</a>
                   </li>
-                 
+                 <li class="nav-item">
+                    <a class="nav-link" href="/banvemaybay/admin/signoutadmin">Sign out</a>
+                  </li>
                 </ul>
                 <form class="d-flex">
                   <input class="form-control me-2" type="text" placeholder="Search">
