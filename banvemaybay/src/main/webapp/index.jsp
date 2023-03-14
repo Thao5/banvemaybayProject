@@ -174,6 +174,10 @@
 								<td><%=cb.getDiem_di() %></td>
 								<td><%=cb.getDiem_den() %></td>
 								<td><%=cb.getGia_tien() %></td>
+								<%if (session.getAttribute("email") != null){
+									%>
+								<td><a href="/banvemaybay/thongtinchuyenbay?id=<%=cb.getId()%>&email=<%=(String)session.getAttribute("email")%>&giatien=<%=cb.getGia_tien()%>&iduser=<%=session.getAttribute("iduser")%>">Đặt vé</a></td>
+								<%} %>
 							</tr>
 						<%}
 									}
@@ -189,11 +193,6 @@
 		</div>
 	</div>
 
-	<form class="d-flex">
-
-		<button class="btn btn-primary show-fly" type="button">Show
-			All Flights</button>
-	</form>
 	<div class="content">
 		<div class="check-photo">
 			<img class="img"

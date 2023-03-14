@@ -36,7 +36,7 @@
 			String name = (String) session.getAttribute("user");
 			if(name == null){
 			%>
-              <a class="navbar-brand" href="admin.jsp">Admin</a>
+              <a class="navbar-brand" href="/banvemaybay/admin">Admin</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                 <span class="navbar-toggler-icon"></span>
               </button>

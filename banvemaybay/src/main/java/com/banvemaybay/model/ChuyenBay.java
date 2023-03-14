@@ -37,7 +37,19 @@ public class ChuyenBay {
 		this.sanbayden_id = sanbayden_id;
 	}
 
-
+	public ChuyenBay(String name, LocalDateTime thoi_gian_xuat_phat, LocalDateTime thoi_gian_den, int ghe_trong,
+			String diem_di, String diem_den, double gia_tien, int sanbaydi_id, int sanbayden_id) {
+		super();
+		this.name = name;
+		this.thoi_gian_xuat_phat = thoi_gian_xuat_phat;
+		this.thoi_gian_den = thoi_gian_den;
+		this.ghe_trong = ghe_trong;
+		this.diem_di = diem_di;
+		this.diem_den = diem_den;
+		this.gia_tien = gia_tien;
+		this.sanbaydi_id = sanbaydi_id;
+		this.sanbayden_id = sanbayden_id;
+	}
 
 	public int getId() {
 		return id;

@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.banvemaybay.model.ChuyenBay;
 import com.banvemaybay.model.SanBay;
 
 public class SanBayServices {
@@ -89,6 +90,76 @@ public class SanBayServices {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void xoaSB(SanBay sb) {
+		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
+			List<ChuyenBay> listcb = new ArrayList<>();
+			String sql = "select * from chuyen_bay where sanbaydi_id = ? or sanbayden_id = ?";
+			PreparedStatement stat = conn.prepareStatement(sql);
+			
+			stat.setInt(1, sb.getId());
+			stat.setInt(2, sb.getId());
+			
+			ResultSet rs = stat.executeQuery();
+			while(rs.next()) {
+				listcb.add(new ChuyenBay(rs.getInt("id"),rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id")));
+			}
+			
+			for(ChuyenBay cb : listcb) {
+				sql = "delete from may_bay where chuyenbay_id = ?";
+				stat = conn.prepareStatement(sql);
+				stat.setInt(1, cb.getId());
+				
+				stat.executeUpdate();
+				
+				sql = "delete from ve where chuyenbay_id = ?";
+				stat = conn.prepareStatement(sql);
+				stat.setInt(1, cb.getId());
+				
+				stat.executeUpdate();
+				
+				sql = "delete from booking where chuyenbay_id = ?";
+				stat = conn.prepareStatement(sql);
+				stat.setInt(1, cb.getId());
+				
+				stat.executeUpdate();
+				
+				sql = "delete from chuyen_bay where id = ?";
+				stat = conn.prepareStatement(sql);
+				stat.setInt(1, cb.getId());
+				
+				stat.executeUpdate();
+			}
+			
+			sql = "delete from san_bay where id = ?";
+			stat = conn.prepareStatement(sql);
+			stat.setInt(1, sb.getId());
+			
+			stat.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public SanBay timSB(int id) {
+		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
+			String sql = "select * from san_bay where id = ?";
+			PreparedStatement stat = conn.prepareStatement(sql);
+			
+			stat.setInt(1, id);
+			
+			ResultSet rs = stat.executeQuery();
+			if(rs.next())
+				return new SanBay(rs.getInt("id"),rs.getString("name"), rs.getString("dia_chi"), rs.getString("lien_lac"));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 //	public static void main(String[] args) {

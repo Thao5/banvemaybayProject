@@ -79,7 +79,7 @@ public class SignInController extends HttpServlet {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = DriverManager.getConnection(url, username, passWord);
-			String query = "SELECT username, password, admin FROM banvemaybay.user WHERE username = ? AND password = ?";
+			String query = "SELECT id, username, password, admin, email FROM banvemaybay.user WHERE username = ? AND password = ?";
 			PreparedStatement stm = connection.prepareStatement(query);
 			
 			stm.setString(1, user);
@@ -102,6 +102,8 @@ public class SignInController extends HttpServlet {
 				}
 				session.setAttribute("user", user);
 				session.setAttribute("isadmin", src.getBoolean("admin"));
+				session.setAttribute("email", src.getString("email"));
+				session.setAttribute("iduser", src.getInt("id"));
 				String loiString = String.format("ten: %s", remember);
 				String tempString = null;
 				if(cookies != null) tempString = "khong null";

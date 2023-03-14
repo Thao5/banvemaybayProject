@@ -40,4 +40,65 @@ public class BookingServices {
 			e.printStackTrace();
 		}
 	}
+	
+	public int findLast() {
+		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
+			String sql = "select id from booking order by id desc limit 1";
+			Statement stat = conn.createStatement();
+			
+			ResultSet rs = stat.executeQuery(sql);
+			if(rs.next()) return rs.getInt("id");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	public void xoaBooking(int id) {
+		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
+			String sql = "delete from booking where id = ?";
+			PreparedStatement stat = conn.prepareStatement(sql);
+			stat.setInt(1,id);
+			
+			stat.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void xoaBooking(Booking b) {
+		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
+			String sql = "delete from ve where booking_id = ?";
+			PreparedStatement stat = conn.prepareStatement(sql);
+			
+			stat.setInt(1, b.getId());
+			stat.executeUpdate();
+			
+			sql = "delete from booking where id = ?";
+			stat = conn.prepareStatement(sql);
+			stat.setInt(1, b.getId());
+			stat.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public Booking findID(int id) {
+		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
+			String sql = "select * from booking where id = ?";
+			PreparedStatement stat = conn.prepareStatement(sql);
+			
+			stat.setInt(1, id);
+			ResultSet rs = stat.executeQuery();
+			if(rs.next())
+				return new Booking(id, rs.getTimestamp("ngay_dat").toLocalDateTime(), rs.getBoolean("trang_thai_dat"), rs.getInt("user_id"), rs.getInt("chuyenbay_id"));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

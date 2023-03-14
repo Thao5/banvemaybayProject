@@ -34,7 +34,7 @@
          <!-- start of navbar -->
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <div class="container-fluid">
-              <a class="navbar-brand" href="admin.jsp">Admin</a>
+              <a class="navbar-brand" href="/banvemaybay/admin">Admin</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -99,7 +99,7 @@
                   <td ><%= cb.getChuyenbay_id() %></td>
                  
                   <td>
-                    <button class="btn btn-danger" onclick="btnXoa()" type="button">Xoá</button>
+                    <a class="btn btn-primary" href="/banvemaybay/admin/delmb?id=<%=cb.getId()%>">Xoá</a>
                   </td>
                 </tr>
                <%}}}%>

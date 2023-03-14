@@ -40,4 +40,17 @@ public class MayBayServices {
 			e.printStackTrace();
 		}
 	}
+	
+	public void xoaMB(int id) {
+		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
+			String sql = "delete from may_bay where id = ?";
+			PreparedStatement stat = conn.prepareStatement(sql);
+			stat.setInt(1,id);
+			
+			stat.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

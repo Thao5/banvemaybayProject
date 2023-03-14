@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.banvemaybay.model.Booking;
 import com.banvemaybay.model.ChuyenBay;
 import com.banvemaybay.model.ThongKe;
 import com.mysql.cj.xdevapi.Result;
@@ -138,7 +139,7 @@ public class ChuyenBayServices {
 		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
 			String sql = "select name from san_bay where id = ?";
 			PreparedStatement stml = conn.prepareStatement(sql);
-			stml.setInt(id, id);
+			stml.setInt(1, id);
 			
 			ResultSet rs = stml.executeQuery();
 			while(rs.next()) {
@@ -254,6 +255,71 @@ public class ChuyenBayServices {
 			e.printStackTrace();
 		}
 		return thongke;
+	}
+	
+	public ChuyenBay timTheoID(int id) {
+		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
+			String sql = "select * from chuyen_bay where id = ?";
+			PreparedStatement stat = conn.prepareStatement(sql);
+			
+			stat.setInt(1, id);
+			ResultSet rs = stat.executeQuery();
+			if(rs.next()) {
+				ChuyenBay cb = new ChuyenBay(rs.getInt("id"),rs.getString("name"), rs.getTimestamp("thoi_gian_xuat_phat").toLocalDateTime(), rs.getTimestamp("thoi_gian_den").toLocalDateTime(), rs.getInt("ghe_trong"), rs.getString("diem_di"), rs.getString("diem_den"), rs.getDouble("gia_tien"), rs.getInt("sanbaydi_id"), rs.getInt("sanbayden_id"));
+				return cb;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void xoaCB(ChuyenBay cb) {
+		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
+			
+			
+			List<Booking> book = new ArrayList<>();
+			String sql = "select * from booking where chuyenbay_id = ?";
+			PreparedStatement stat = conn.prepareStatement(sql);
+			
+			stat.setInt(1, cb.getId());
+			ResultSet rs = stat.executeQuery();
+			while(rs.next()) {
+				book.add(new Booking(rs.getInt("id"), rs.getTimestamp("ngay_dat").toLocalDateTime(), rs.getBoolean("trang_thai_dat"), rs.getInt("user_id"), rs.getInt("chuyenbay_id")));
+			}
+			
+			for(Booking b : book) {
+				sql = "delete from ve where chuyenbay_id = ? or booking_id = ?";
+				stat = conn.prepareStatement(sql);
+				
+				stat.setInt(1, cb.getId());
+				stat.setInt(2, b.getId());
+				stat.executeUpdate();
+				
+				sql = "delete from booking where chuyenbay_id = ?";
+				stat = conn.prepareStatement(sql);
+				
+				stat.setInt(1, cb.getId());
+				stat.executeUpdate();
+			}
+			
+			
+			sql = "delete from may_bay where chuyenbay_id = ?";
+			stat = conn.prepareStatement(sql);
+			
+			stat.setInt(1, cb.getId());
+			stat.executeUpdate();
+			
+			sql = "delete from chuyen_bay where id = ?";
+			stat = conn.prepareStatement(sql);
+			
+			stat.setInt(1, cb.getId());
+			stat.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public static Integer tryParse(String text) {

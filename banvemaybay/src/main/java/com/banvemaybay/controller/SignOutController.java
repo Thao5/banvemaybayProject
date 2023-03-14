@@ -17,6 +17,8 @@ public class SignOutController extends HttpServlet {
         HttpSession session = req.getSession();
         session.removeAttribute("user");
         session.removeAttribute("isadmin");
+        session.removeAttribute("email");
+        session.removeAttribute("iduser");
         session.invalidate();
         resp.sendRedirect("/banvemaybay/index");
     }

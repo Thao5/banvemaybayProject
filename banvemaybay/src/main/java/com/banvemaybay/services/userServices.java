@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.PreparedStatement;
 
+import com.banvemaybay.model.Booking;
 import com.banvemaybay.model.User;
 
 public class userServices {
@@ -108,5 +109,56 @@ public class userServices {
 			e.printStackTrace();
 		}
 		return listuser;
+	}
+	
+	public User timUser(int i) {
+		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
+			String sql = "select * from user where id = ?";
+			PreparedStatement stat = conn.prepareStatement(sql);
+			stat.setInt(1, i);
+			
+			ResultSet rs = stat.executeQuery();
+			if(rs.next()) {
+				return new User(rs.getInt("id"), rs.getString("lastname"), rs.getString("name"), rs.getString("sdt"), rs.getString("email"), rs.getString("username"), rs.getString("password"), rs.getBoolean("admin"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void xoaUser(User u) {
+		try(Connection conn = DatabaseConnection.getDatabaseConnection()){
+			List<Booking> book = new ArrayList<>();
+			String sql = "select * from booking where user_id = ?";
+			PreparedStatement stat = conn.prepareStatement(sql);
+			stat.setInt(1, u.getId());
+			
+			ResultSet rs = stat.executeQuery();
+			while(rs.next()) {
+				book.add(new Booking(rs.getTimestamp("ngay_dat").toLocalDateTime(), rs.getBoolean("trang_thai_dat"), rs.getInt("user_id"), rs.getInt("chuyenbay_id")));
+			}
+			
+			for(Booking b : book) {
+				sql = "delete from ve where booking_id = ?";
+				stat = conn.prepareStatement(sql);
+				stat.setInt(1, b.getId());
+				stat.executeUpdate();
+			}
+			
+			sql = "delete from booking where user_id = ?";
+			stat = conn.prepareStatement(sql);
+			stat.setInt(1, u.getId());
+			stat.executeUpdate();
+			
+			sql = "delete from user where id = ?";
+			stat = conn.prepareStatement(sql);
+			stat.setInt(1, u.getId());
+			stat.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
